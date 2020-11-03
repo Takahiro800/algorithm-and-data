@@ -1,3 +1,5 @@
+from sys import stdin
+
 class Node:
   def __init__(self, num, prv=None, nxt=None):
     self.num = num
@@ -56,9 +58,8 @@ class DoublyLinkedList:
     while it is not None:
       ret.append(it.num)
       it = it.nxt
-    L = [str(a) for a in ret]
-    L = " ".join(L)
-    return L
+
+    print(' '.join(ret))
 
 
 def _main():
@@ -66,17 +67,17 @@ def _main():
   lst = DoublyLinkedList()
 
   for _ in range(n):
-    cmd = list(input().split())
+    cmd = list(stdin.readline().split())
     if cmd[0] == 'insert':
-      lst.insert(int(cmd[1]))
+      lst.insert((cmd[1]))
     elif cmd[0] == 'delete':
-      lst.delete_num(int(cmd[1]))
+      lst.delete_num((cmd[1]))
     elif cmd[0] == 'deleteFirst':
       lst.delete_start()
     else:
       lst.delete_last()
 
-  print(lst.get_content())
+  lst.get_content()
 
 if __name__ == '__main__':
   _main()
